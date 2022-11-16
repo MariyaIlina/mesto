@@ -11,14 +11,14 @@ margin-top: 15px;
 
 @media screen and (max-width:1044px) {
   .profile__edit {
-    margin: 15px 0 0 20px ;
+    margin: 15px 0 0 20px;
  }
 }
 @media screen and (max-width:650px) {
   .profile__edit {
     width: 18px;
     height: 18px;
-    margin: 8px 0 0 10px ;
+    margin: 8px 0 0 10px;
  }
   
 }
