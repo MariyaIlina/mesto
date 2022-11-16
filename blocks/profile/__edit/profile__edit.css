@@ -8,7 +8,9 @@ margin-left: 18px;
 background: url(../../../images/pen.png) no-repeat center;
 margin-top: 15px;
 }
-
+.profile__edit:hover {
+  opacity: 0.5;
+}
 @media screen and (max-width:1044px) {
   .profile__edit {
     margin: 15px 0 0 20px;

@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+.popup__save:hover {
+  opacity: .8;
+}
+
 @media screen and (max-width: 530px) {
   .popup__save {
     width: 100%;

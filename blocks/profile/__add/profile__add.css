@@ -13,6 +13,9 @@
   box-sizing: border-box;
 }
 
+.profile__add:hover {
+  opacity: 0.5;
+}
 @media screen and (max-width: 1044px) {
  .profile__add {
   width: 282px;
