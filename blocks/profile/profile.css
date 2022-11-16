@@ -1,0 +1,10 @@
+.profile{
+  min-height: 120px;
+}
+
+@media screen and (max-width:1044px) {
+  .profile {
+    min-height: 286px;
+    
+  } 
+}

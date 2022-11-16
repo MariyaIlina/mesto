@@ -1,0 +1,12 @@
+.profile__redactor {
+width: 10px;
+height: 10px;
+
+}
+
+@media screen and (max-width:500px) {
+  .profile__redactor{
+    width: 7.5px;
+    height: 7.5px;
+  }
+}

@@ -1,0 +1,24 @@
+.profile__edit {
+box-sizing: border-box;
+width: 24px;
+height: 24px;
+border: 1px solid #FFFFFF;
+background-color:black;
+margin-left: 18px;
+background: url(../../../images/pen.png) no-repeat center;
+margin-top: 15px;
+}
+
+@media screen and (max-width:1044px) {
+  .profile__edit {
+    margin: 15px 0 0 20px ;
+ }
+}
+@media screen and (max-width:650px) {
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    margin: 8px 0 0 10px ;
+ }
+  
+}

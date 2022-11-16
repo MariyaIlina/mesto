@@ -1,0 +1,13 @@
+.root__footer{
+  margin-top: 66px;
+  display: flex;
+  flex-direction: row;
+  justify-items: start;
+  
+}
+@media screen and (max-width:1044px) {
+  .root__footer {
+    padding: 0 19px 0;
+    margin-top: 48px;
+  } 
+}

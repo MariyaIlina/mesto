@@ -1,0 +1,15 @@
+.root__elements {
+  min-height: 744px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 282px);
+  gap:  17px ;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+
+@media screen and (max-width:500px) {
+  .root__elements {
+
+ }
+}

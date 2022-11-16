@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Место</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="root">
+<header class="header root__header">
+  <img src="./images/logo.svg" alt="логотип" class="header__logo">
+</header>
+<main class="content"></main>
+  <div class="profile root__profile">
+    <img src="./images/image.jpg" class="profile__avatar" alt="аватар">
+    <div class="profile__info">
+      <div><h1 class="profile__name">Жак-Ив Кусто</h1> 
+      <p class="profile__text">Исследователь океана</p></div>
+      <button  class="profile__edit content_hover"></button>
+    </div>
+    
+    <button class="profile__add content_hover"></button>
+  </div>
+  <section class="elements root__elements">
+    <div class="element root__element">
+        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск" class="element__mask-group">
+        <div class="element__group">
+          <h2 class="element__text">Карачаевск</h2>
+          <button class="element__vector content_hover"></button>
+        </div>
+    </div>
+  
+    <div class="element root__element">
+       <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="element__mask-group">
+      <div class="element__group">
+        <h2 class="element__text">Гора Эльбрус</h2>
+        <button class="element__vector content_hover"></button>
+      </div>
+    </div>
+    <div class="element root__element">
+        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__mask-group">
+      <div class="element__group">
+        <h2 class="element__text">Домбай</h2>
+        <button class="element__vector content_hover"></button>
+      </div>
+    </div>
+    <div class="element root__element">
+        <img src="./images/МысОстрый.jpg" alt="Мыс Острый" class="element__mask-group">
+      <div class="element__group">
+        <h2 class="element__text">Мыс Острый</h2>
+        <button class="element__vector content_hover"></button>
+      </div>
+    </div>
+    <div class="element root__element">
+      <img src="./images/Обскоеморе.jpg" alt="Обское море" class="element__mask-group">
+      <div class="element__group">
+        <h2 class="element__text">Обское море</h2>
+        <button class="element__vector content_hover"></button>
+      </div>
+    </div>
+    <div class="element root__element">
+      <img src="./images/Койонсаари.jpg" alt="Койонсаари" class="element__mask-group">
+      <div class="element__group">
+        <h2 class="element__text">Койонсаари</h2>
+        <button class="element__vector content_hover"></button>
+      </div>
+    </div>
+  </section>
+<footer class="root__footer">
+  <p class="copyright">© 2020 Mesto Russia</p>
+</footer>
+<section class="popup">
+  <form class ="popup__container">
+    <button class="popup__close content_hover"></button>
+    <div class="popup__content">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input class="popup__name" required placeholder ="Введите имя" type="text">
+      <input class="popup__text" required placeholder ="Введите профессию" type="text">
+      <button class="popup__save popup__save_hover" type="submit">Сохранить</button>
+    </div>
+  </form>
+</section>
+<script src="./scripts/index.js"></script>
+</body>
+</html>
