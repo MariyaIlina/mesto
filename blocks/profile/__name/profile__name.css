@@ -8,18 +8,20 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  line-height: 48px;
 }
-@media screen and (max-width:1044px){
-  .profile__name{
+
+@media screen and (max-width:1044px) {
+  .profile__name {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
 
-@media screen and (max-width:580px){
-  .profile__name{
+@media screen and (max-width:580px) {
+  .profile__name {
     font-size: 27px;
-    min-height: 26px;
+    line-height: 33px;
   }
 }

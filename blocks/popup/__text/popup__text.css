@@ -14,9 +14,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  line-height: 17px;
+  max-width: 358px;
 }
+
 @media screen and (max-width:530px) {
-  .popup__text{
+  .popup__text {
     margin-top: 20px;
     margin-bottom: 45px;
   }

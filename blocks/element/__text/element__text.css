@@ -1,4 +1,4 @@
-.element__text{
+.element__text {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
