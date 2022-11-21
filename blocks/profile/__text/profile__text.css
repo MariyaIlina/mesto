@@ -11,10 +11,10 @@
   max-width: 336px;
 }
 
-@media screen and (max-width:1050px) {
+@media screen and (max-width:1053px) {
   .profile__text {
-    display: flex;
     justify-content: center;
+    align-items: center;
   }
 }
 

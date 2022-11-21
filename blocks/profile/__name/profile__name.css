@@ -11,9 +11,8 @@
   line-height: 48px;
 }
 
-@media screen and (max-width:1050px) {
+@media screen and (max-width:1053px) {
   .profile__name {
-    display: flex;
     justify-content: center;
     align-items: center;
   }
