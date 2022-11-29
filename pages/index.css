@@ -32,3 +32,12 @@
 @import url(../blocks/popup/__text/_profile/popup__text_profile_job.css);
 @import url(../blocks/popup/__text/_profile/popup__text_profile_name.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/popup/__create/popup__create.css);
+@import url(../blocks/popup/__text/_add/popup__text_add_link.css);
+@import url(../blocks/popup/__text/_add/popup__text_add_name.css);
+@import url(../blocks/popup/_add/popup_add.css);
+@import url(../blocks/popup/__container/_add/popup__container_add.css);
+@import url(../blocks/popup/__close/_add/popup__close_add.css);
+@import url(../blocks/popup/__content/_add/popup__content_add.css);
+@import url(../blocks/popup/__title/_add/popup__title_add.css);
+@import url(../blocks/popup/_add/popup_add_is-opened.css);
