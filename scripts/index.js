@@ -44,32 +44,7 @@ popupElementOpen.addEventListener('click', openPopup);
 popupElementClose.addEventListener('click', closePopup);
 formElement.addEventListener('submit', formSubmitHandler);
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]
+
 const popupElementAdd = document.querySelector('.popup_add')
 const popupCreate = popupElement.querySelector('.popup__create');
 const popupAdd = document.querySelector('.profile__add');
@@ -134,28 +109,28 @@ function closePopupAdd() {
   popupElementAdd.classList.remove('popup_is-opened');
 }
 
-formElementAdd.addEventListener('submit', formSubmitHandler);
+
 popupAdd.addEventListener('click', openPopupAdd);
 popupAddClose.addEventListener('click', closePopupAdd);
 formElementAdd.addEventListener('submit', handleFormSubmit)
 
 
-const popupImg = document.querySelector('.popup__img');
-const popupCloseImg = popupImg.querySelector('.popup__close');
+// const popupImg = document.querySelector('.popup__img');
+// const popupCloseImg = popupImg.querySelector('.popup__close');
 
-function openPopupImg() {
-  popupImg.classList.add('popup_is-opened');
-}
-function closePopupImg() {
-  popupImg.classList.remove('popup_is-opened');
-}
+// function openPopupImg() {
+//   popupImg.classList.add('popup_is-opened');
+// }
+// function closePopupImg() {
+//   popupImg.classList.remove('popup_is-opened');
+// }
 
-function formSubmitHandlerImg(evt) {
-  evt.preventDefault();
-  closePopup();
-}
-elementLink.addEventListener('click', openPopupImg);
-popupCloseImg.addEventListener('click', closePopupImg);
-popupImg.addEventListener('submit', formSubmitHandlerImg);
+// function formSubmitHandlerImg(evt) {
+//   evt.preventDefault();
+//   closePopup();
+// }
+// elementLink.addEventListener('click', openPopupImg);
+// popupCloseImg.addEventListener('click', closePopupImg);
+// popupImg.addEventListener('submit', formSubmitHandlerImg);
 
 
