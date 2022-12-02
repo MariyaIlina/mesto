@@ -26,48 +26,7 @@
       <button class="profile__add" type="button" aria-label="add"></button>
     </section>
     <section class="elements">
-      <div class="element">
-        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск" class="element__mask-group">
-        <div class="element__group">
-          <h2 class="element__text">Карачаевск</h2>
-          <button class="element__like" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="element__mask-group">
-        <div class="element__group">
-          <h2 class="element__text">Гора Эльбрус</h2>
-          <button class="element__like" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__mask-group">
-        <div class="element__group">
-          <h2 class="element__text">Домбай</h2>
-          <button class="element__like" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/МысОстрый.jpg" alt="Мыс Острый" class="element__mask-group">
-        <div class="element__group">
-          <h2 class="element__text">Мыс Острый</h2>
-          <button class="element__like" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/краснаяполяна_cut-photo.ru.jpg" alt="Красная поляна" class="element__mask-group">
-        <div class="element__group">
-          <h2 class="element__text">Красная поляна</h2>
-          <button class="element__like" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/Койонсаари.jpg" alt="Койонсаари" class="element__mask-group">
-        <div class="element__group">
-          <h2 class="element__text">Койонсаари</h2>
-          <button class="element__like" type="button" aria-label="like"></button>
-        </div>
-      </div>
+     
     </section>
   </main>
   <footer class="footer root__footer">
@@ -87,7 +46,7 @@
   </div>
   <div class="popup popup_add">
     <div class="popup__container popup__container_add">
-      <button class="popup__close popup__close_add" type="button" aria-label="close"></button>
+      <button class="popup__close" type="button" aria-label="close"></button>
       <form class="popup__content popup__content_add" name="form">
         <h2 class="popup__title popup__title_add">Новое место</h2>
         <input class="popup__text popup__text_add_name" name="name" required placeholder="Назваание" type="text">
@@ -97,16 +56,22 @@
       </form>
     </div>
   </div>
-  <script src="./scripts/index.js"></script>
+ <div class="popup popup__img">
+  <img src=" " alt=" " class="element__mask-group">
+  <h2 class="element__text"></h2>
+  <button class="popup__close" type="button" aria-label="close"></button>
+ </div>
   <template id="addtemplate">
     <div class="element">
-      <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск" class="element__mask-group">
+      <img src=" " alt=" " class="element__mask-group">
+      <button class="element__delete" type="button" arial-label="delite"></button>
       <div class="element__group">
-        <h2 class="element__text">Карачаевск</h2>
+        <h2 class="element__text"></h2>
         <button class="element__like" type="button" aria-label="like"></button>
       </div>
     </div>
   </template>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
