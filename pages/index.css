@@ -45,4 +45,9 @@
 @import url(../blocks/popup/__close/_img/popup__close_img.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/_preview/popup_preview.css);
+<<<<<<< HEAD
 @import url(../blocks/popup/__container-preview.css/popup__container-preview.css);
+=======
+@import url(../blocks/popup/__container-preview.css/popup__container-preview.css);
+;
+>>>>>>> 908aedcbb48a67bbfab2c2c23d1df35ed6a973f8
