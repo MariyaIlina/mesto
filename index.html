@@ -26,11 +26,11 @@
       <button class="profile__add" type="button" aria-label="add"></button>
     </section>
     <section class="elements">
-     
+
     </section>
   </main>
   <footer class="footer root__footer">
-    <p class="footer__copyright">© 2020 Mesto Russia</p>
+    <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
   <div class="popup">
     <div class="popup__container">
@@ -46,27 +46,29 @@
   </div>
   <div class="popup popup_add">
     <div class="popup__container popup__container_add">
-      <button class="popup__close" type="button" aria-label="close"></button>
+      <button class="popup__close popup__close_add" type="button" aria-label="close"></button>
       <form class="popup__content popup__content_add" name="form">
         <h2 class="popup__title popup__title_add">Новое место</h2>
-        <input class="popup__text popup__text_add_name" name="name" required placeholder="Назваание" type="text">
+        <input class="popup__text popup__text_add_name" name="name" required placeholder="Название" type="text">
         <input class="popup__text popup__text_add_link" name="link" required placeholder="Ссылка на картинку"
           type="text">
         <button class="popup__create" type="submit">Создать</button>
       </form>
     </div>
   </div>
- <div class="popup popup__preview">
-  <button class="popup__close" type="button" aria-label="close"></button>
-  <figure>
-    <img src=" " alt=" " class="popup__img">
-    <figcaption class="popup__caption"></figcaption>
-  </figure>
- </div>
+  <div class="popup popup_preview">
+    <div class="popup__container-preview">
+      <button class=" popup__close popup__close-preview" type="button" aria-label="close"></button>
+      <div>
+        <img src=" " alt=" " class="popup__img">
+        <figcaption class="popup__caption"></figcaption>
+      </div>
+    </div>
+  </div>
   <template id="addtemplate">
     <div class="element">
       <img src=" " alt=" " class="element__mask-group">
-      <button class="element__delete" type="button" arial-label="delite"></button>
+      <button class="element__delete" type="button" arial-label="delete"></button>
       <div class="element__group">
         <h2 class="element__text"></h2>
         <button class="element__like" type="button" aria-label="like"></button>
