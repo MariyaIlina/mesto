@@ -32,14 +32,16 @@
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
   <div class="popup popup_edit-profile">
-    <div class="popup__container">
+    <div class="popup__container popup__container_edit">
       <button class="popup__close" type="button" aria-label="close"></button>
       <form class="popup__content" name="form">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__text popup__text_profile_name" name="name" required placeholder="Введите имя" type="text"
+        <input class="popup__text popup__text_profile_name" name="name" 
+        required placeholder="Введите имя" type="text"
           minlength="2" maxlength="40" id="popup-profile-name">
           <p class="popup__error"><span id="popup-profile-name-error"></span></p>
-        <input class="popup__text popup__text_profile_job" name="job" required placeholder="Введите профессию"
+        <input class="popup__text popup__text_profile_job" name="job" 
+        required placeholder="Введите профессию"
           type="text" minlength="2" maxlength="200" id="popup-profile-job">
           <p class="popup__error"><span id="popup-profile-job-error"></span></p>
         <button class="popup__button" type="submit">Сохранить</button>
@@ -51,9 +53,11 @@
       <button class="popup__close popup__close_add" type="button" aria-label="close"></button>
       <form class="popup__content popup__content_add" name="form">
         <h2 class="popup__title popup__title_add">Новое место</h2>
-        <input class="popup__text popup__text_add_name" name="name" required placeholder="Название" type="text" minlength="2" maxlength="30" id="popup-add-name">
+        <input class="popup__text popup__text_add_name" name="name" 
+        required placeholder="Название" type="text" minlength="2" maxlength="30" id="popup-add-name">
         <p class="popup__error"><span id="popup-add-name-error"></span></p>
-        <input class="popup__text popup__text_add_link" name="link" required placeholder="Ссылка на картинку" id="popup-add-link"
+        <input class="popup__text popup__text_add_link" name="link" required 
+        placeholder="Ссылка на картинку" id="popup-add-link"
           type="url">
           <p class="popup__error"><span id="popup-add-link-error"></span></p>
           <button class="popup__button popup__button_disabled" type="submit">Создать</button>
@@ -61,7 +65,7 @@
     </div>
   </div>
   <div class="popup popup_preview">
-    <div class="popup__container-preview">
+    <div class="popup__container popup__container-preview">
       <button class=" popup__close popup__close-preview" type="button" aria-label="close"></button>
       <div>
         <img src=" " alt=" " class="popup__img">
