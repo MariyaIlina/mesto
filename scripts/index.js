@@ -23,12 +23,12 @@ const popupImgCaptionPreview = popupPreview.querySelector('.popup__caption');
 const openPopup = (element) => {
   element.classList.add('popup_is-opened');
   document.addEventListener('keyup', handleKeyUp);
-  
 }
 
 const closePopup = (element) => {
   element.classList.remove('popup_is-opened');
-  }
+  document.removeEventListener('keyup', handleKeyUp);
+}
 
 const closeOverlayPopup = (e) => {
   const popupOpen = document.querySelector('.popup_is-opened')
@@ -41,7 +41,6 @@ const handleKeyUp = (e) => {
   if (e.key === 'Escape') {
     const openPopup = document.querySelector('.popup_is-opened')
     closePopup(openPopup);
-    document.removeEventListener('keyup', handleKeyUp);
   }
 }
 
@@ -116,9 +115,9 @@ buttonOpenAddCardForm.addEventListener('click', () => { openPopup(popupAddProfil
 popupCloseAddElement.addEventListener('click', () => { closePopup(popupAddProfile) });
 formAddProfileElement.addEventListener('submit', submitAddCardForm);
 formEditProfileElement.addEventListener('submit', submitHandlerEditProfileForm);
-popupEditProfile.addEventListener('click', closeOverlayPopup); 
-popupAddProfile.addEventListener('click', closeOverlayPopup); 
-popupPreview.addEventListener('click', closeOverlayPopup); 
+popupEditProfile.addEventListener('click', closeOverlayPopup);
+popupAddProfile.addEventListener('click', closeOverlayPopup);
+popupPreview.addEventListener('click', closeOverlayPopup);
 
 
 

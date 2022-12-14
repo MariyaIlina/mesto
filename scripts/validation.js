@@ -1,13 +1,13 @@
 const checkInputValidity = (input, config) => {
   const error = document.querySelector(`#${input.id}-error`)
   if (input.validity.valid) {
-    error.textContent = ''
-    input.classList.remove(config.inputErrorClass)
-    error.classList.remove(config.errorClass)
+    error.textContent = '';
+    input.classList.remove(config.inputErrorClass);
+    error.classList.remove(config.errorClass);
   } else {
-    error.textContent = input.validationMessage
-    input.classList.add(config.inputErrorClass)
-    error.classList.add(config.errorClass)
+    error.textContent = input.validationMessage;
+    input.classList.add(config.inputErrorClass);
+    error.classList.add(config.errorClass);
   }
 }
 
@@ -51,6 +51,5 @@ enableValidation({
   inputErrorClass: 'popup__text_error',
   errorClass: 'popup__error'
 });
-
 
 
