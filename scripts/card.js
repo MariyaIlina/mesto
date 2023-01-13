@@ -1,65 +1,42 @@
-import initialCards from "./data.js";
+import { openPopup, popupPreview, popupImgPreview, popupImgCaptionPreview} from "./index.js";
 export class Card {
-  constructor(data, templateSelector, openPopup) {
-    this._name = data.name;
-    this._link = data.link;
-    this._templateSelector = templateSelector;
-
-  }
-  // вернуть разметку карточки через return
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(this._templateSelector)
-      .content
-      .querySelector('.element')
-      .cloneNode(true);
-    return cardElement;
-  }
-  
-  generateCard() {
-    this._element = this._getTemplate();
-    this._setEventListenersLike();
-    this._setEventListenersDelete();
-    this._setEventListenersPreview();
-    // Добавим данные
-    this._element.querySelector('.element__mask-group').src = this._link;
-    this._element.querySelector('.element__text').textContent = this._name;
-
-    return this._element;
-  }
-  _setEventListenersLike() {
-    this._element.querySelector('.element__like').addEventListener('click', () => {
-      this._handleLikeClick();
-    });
-  }
-  _handleLikeClick() {
-    this._element.querySelector('.element__like').classList.toggle('element__like_active');
+  constructor(data, templateElement) {
+    this._templateElement = templateElement;
+    this.data = data;
   }
 
-  _setEventListenersDelete() {
-    this._element.querySelector('.element__delete').addEventListener('click', () => {
-      this._handleDeleteClick();
-    })
-  };
-  _handleLikeClick() {
-    this._element.querySelector('.element').remove;
+  _likeButtonClick = (e) => {
+    e.target.classList.toggle('element__like_active')
   }
-  _setEventListenersPreview() {
-    this._element.querySelector('.element__mask-group').addEventListener('click', () => {
-      this._handlePreviewClick();
-    })
+
+  _deleteButtonClick = (e) => {
+    e.target.closest('.element').remove()
   }
-  _handlePreviewClick() {
+
+  _imgPreview = () => {
+    popupImgPreview.src = this.data.link;
+    popupImgPreview.alt = this.data.link;
+    popupImgCaptionPreview.textContent = this.data.name;
     openPopup(popupPreview);
   }
+
+  _addEventListeners() {
+    const likeButtonElement = this._template.querySelector('.element__like');
+    const deleteButtonElement = this._template.querySelector('.element__delete');
+    likeButtonElement.addEventListener('click', this._likeButtonClick);
+    deleteButtonElement.addEventListener('click', this._deleteButtonClick);
+    this._imgTemplateElement.addEventListener('click', this._imgPreview);
+  }
+
+  getTemplate() {
+    this._template = this._templateElement.cloneNode(true);
+    const titleTemplateElement = this._template.querySelector('.element__text');
+    this._imgTemplateElement = this._template.querySelector('.element__mask-group');
+    titleTemplateElement.textContent = this.data.name;
+    this._imgTemplateElement.src = this.data.link;
+    this._imgTemplateElement.alt = this.data.name;
+    this._addEventListeners()
+    return this._template;
+  }
 }
-
-
-initialCards.forEach((item) => {
-  // Создадим экземпляр карточки
-  const card = new Card(item);
-  // Создаём карточку и возвращаем наружу
-  const cardElement = card.generateCard();
-  document.body.append(cardElement); //elements.append(cardElement)
-});
 

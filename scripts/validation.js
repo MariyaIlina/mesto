@@ -43,13 +43,13 @@ const enableValidation = (config) => {
   })
 
 }
-enableValidation({
-  formSelector: '.popup__content',
-  inputSelector: '.popup__text',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__text_error',
-  errorClass: 'popup__error'
-});
+// enableValidation({
+//   formSelector: '.popup__content',
+//   inputSelector: '.popup__text',
+//   submitButtonSelector: '.popup__button',
+//   inactiveButtonClass: 'popup__button_disabled',
+//   inputErrorClass: 'popup__text_error',
+//   errorClass: 'popup__error'
+// });
 
 
