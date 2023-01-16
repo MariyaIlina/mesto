@@ -1,22 +1,22 @@
 import initialCards from './data.js';
 import { Card } from './Card.js';
-import { FormValidator } from './FormValidation.js';
+import { FormValidator } from './FormValidator.js';
 export const popupEditProfile = document.querySelector('.popup_edit-profile');
 export const popupAddProfile = document.querySelector('.popup_add');
-const popupCloseElement = popupEditProfile.querySelector('.popup__close');
+const popupCloseEditElement = popupEditProfile.querySelector('.popup__close');
 const popupCloseAddElement = popupAddProfile.querySelector('.popup__close_add')
 const buttonOpenEditProfileForm = document.querySelector('.profile__edit');
 export const formEditProfileElement = document.querySelector('.popup__content');
-export const nameInputformEditProfile = formEditProfileElement.querySelector('.popup__text_profile_name');
-export const jobInputformEditProfile = formEditProfileElement.querySelector('.popup__text_profile_job');
+export const nameInputFormEditProfile = formEditProfileElement.querySelector('.popup__text_profile_name');
+export const jobInputFormEditProfile = formEditProfileElement.querySelector('.popup__text_profile_job');
 const nameProfile = document.querySelector('.profile__name');
 const infoProfile = document.querySelector('.profile__text');
 const buttonOpenAddCardForm = document.querySelector('.profile__add');
-export const nameInputformAddProfile = document.querySelector('.popup__text_add_name');
-export const linkInputformAddProfile = document.querySelector('.popup__text_add_link');
+export const nameInputFormAddProfile = document.querySelector('.popup__text_add_name');
+export const linkInputFormAddProfile = document.querySelector('.popup__text_add_link');
 export const formAddProfileElement = document.querySelector('.popup__content_add');
-export const templateElement = document.querySelector('#template').content.querySelector('.element');
-export const elements = document.querySelector('.elements');
+export const cardTemplate = document.querySelector('#template').content.querySelector('.element');
+export const cardsContainer = document.querySelector('.elements');
 export const popupPreview = document.querySelector('.popup_preview');
 export const popupImgPreview = popupPreview.querySelector('.popup__img');
 const popupCloseImgPreview = popupPreview.querySelector('.popup__close-preview');
@@ -24,8 +24,8 @@ export const popupImgCaptionPreview = popupPreview.querySelector('.popup__captio
 
 export const openPopup = (element) => {
   element.classList.add('popup_is-opened');
-  addFormValidator.resetInput()
-  editFormValidator.resetInput()
+  cardFormValidator.resetInput()
+  profileFormValidator.resetInput()
   document.addEventListener('keyup', handleKeyUp);
 }
 
@@ -49,55 +49,60 @@ const handleKeyUp = (e) => {
 }
 
 function fillInFormInputs() {
-  nameInputformEditProfile.value = nameProfile.textContent;
-  jobInputformEditProfile.value = infoProfile.textContent;
+  nameInputFormEditProfile.value = nameProfile.textContent;
+  jobInputFormEditProfile.value = infoProfile.textContent;
 }
 
-function submitHandlerEditProfileForm(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  nameProfile.textContent = nameInputformEditProfile.value;
-  infoProfile.textContent = jobInputformEditProfile.value;
+  nameProfile.textContent = nameInputFormEditProfile.value;
+  infoProfile.textContent = jobInputFormEditProfile.value;
   closePopup(popupEditProfile);
 }
 
-const submitAddCardForm = (e) => {
-  e.preventDefault()
-  const cardData = {
-    name: nameInputformAddProfile.value,
-    link: linkInputformAddProfile.value,
-  } 
-  
-  const newElement = new Card(cardData, templateElement);
-  const card = newElement.getTemplate();
-  elements.prepend(card);
-  closePopup(popupAddProfile);
-  formAddProfileElement.reset();
-}
 
 buttonOpenEditProfileForm.addEventListener('click', () => {
   openPopup(popupEditProfile);
   fillInFormInputs();
 })
 
-popupCloseElement.addEventListener('click', () => { closePopup(popupEditProfile) });
+ export const handleImageClick = () => {
+  popupImgPreview.src = data.link;
+  popupImgPreview.alt = data.link;
+  popupImgCaptionPreview.textContent = data.name;
+  openPopup(popupPreview);
+}
+const handleCardFormSubmit = (e) => {
+  e.preventDefault()
+  const data = {
+    name: nameInputFormAddProfile.value,
+    link: linkInputFormAddProfile.value,
+  } 
+ } 
+const imgTemplateElement = cardTemplate.querySelector('.element__mask-group');
+imgTemplateElement.addEventListener('click', handleImageClick);
+popupCloseEditElement.addEventListener('click', () => { closePopup(popupEditProfile) });
 popupCloseImgPreview.addEventListener('click', () => { closePopup(popupPreview) });
 buttonOpenAddCardForm.addEventListener('click', () => { openPopup(popupAddProfile) });
 popupCloseAddElement.addEventListener('click', () => { closePopup(popupAddProfile) });
-formAddProfileElement.addEventListener('submit', submitAddCardForm);
-formEditProfileElement.addEventListener('submit', submitHandlerEditProfileForm);
+formAddProfileElement.addEventListener('submit', handleCardFormSubmit);
+formEditProfileElement.addEventListener('submit', handleProfileFormSubmit);
 popupEditProfile.addEventListener('click', closeOverlayPopup);
 popupAddProfile.addEventListener('click', closeOverlayPopup);
 popupPreview.addEventListener('click', closeOverlayPopup);
 
 
-const renderInitialCards = (data, wrapElement) => {
-  const element = new Card(data, templateElement)
+const renderInitialCards = (data, cardsContainer) => {
+  const element = new Card(data, cardTemplate)
   const card = element.getTemplate();
-  wrapElement.append(card);
+  cardsContainer.append(card);
+  closePopup(popupAddProfile);
+  formAddProfileElement.reset();
 }
 
+
 initialCards.forEach(function (data) {
-  renderInitialCards(data, elements)
+  renderInitialCards(data, cardsContainer)
 })
 
 export const validationConfig = {
@@ -108,8 +113,8 @@ export const validationConfig = {
   inputErrorClass: 'popup__text_error',
   errorClass: 'popup__error'
 };
-const addFormValidator = new FormValidator(validationConfig, formAddProfileElement)
-addFormValidator.enableValidation()
+const cardFormValidator = new FormValidator(validationConfig, formAddProfileElement)
+cardFormValidator.enableValidation()
 
-const editFormValidator = new FormValidator(validationConfig, formEditProfileElement)
-editFormValidator.enableValidation()
+const profileFormValidator = new FormValidator(validationConfig, formEditProfileElement)
+profileFormValidator.enableValidation()
