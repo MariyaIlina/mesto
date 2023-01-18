@@ -24,8 +24,6 @@ export const popupImgCaptionPreview = popupPreview.querySelector('.popup__captio
 
 export const openPopup = (element) => {
   element.classList.add('popup_is-opened');
-  cardFormValidator.resetInput()
-  profileFormValidator.resetInput()
   document.addEventListener('keyup', handleKeyUp);
 }
 
@@ -66,26 +64,26 @@ buttonOpenEditProfileForm.addEventListener('click', () => {
   fillInFormInputs();
 })
 
- export const handleImageClick = () => {
-  popupImgPreview.src = data.link;
-  popupImgPreview.alt = data.link;
-  popupImgCaptionPreview.textContent = data.name;
+export const handleImageClick = (name, link) => {
+  popupImgPreview.src = link;
+  popupImgPreview.alt = name;
+  popupImgCaptionPreview.textContent = name;
   openPopup(popupPreview);
 }
-const handleCardFormSubmit = (e) => {
-  e.preventDefault()
-  const data = {
-    name: nameInputFormAddProfile.value,
-    link: linkInputFormAddProfile.value,
-  } 
- } 
+//  const handleCardFormSubmit = (e) => {
+//   e.preventDefault()
+//   const data = {
+//     name: nameInputFormAddProfile.value,
+//     link: linkInputFormAddProfile.value,
+//   } 
+//  }
 const imgTemplateElement = cardTemplate.querySelector('.element__mask-group');
 imgTemplateElement.addEventListener('click', handleImageClick);
 popupCloseEditElement.addEventListener('click', () => { closePopup(popupEditProfile) });
 popupCloseImgPreview.addEventListener('click', () => { closePopup(popupPreview) });
 buttonOpenAddCardForm.addEventListener('click', () => { openPopup(popupAddProfile) });
 popupCloseAddElement.addEventListener('click', () => { closePopup(popupAddProfile) });
-formAddProfileElement.addEventListener('submit', handleCardFormSubmit);
+// formAddProfileElement.addEventListener('submit', handleCardFormSubmit);
 formEditProfileElement.addEventListener('submit', handleProfileFormSubmit);
 popupEditProfile.addEventListener('click', closeOverlayPopup);
 popupAddProfile.addEventListener('click', closeOverlayPopup);
@@ -93,17 +91,19 @@ popupPreview.addEventListener('click', closeOverlayPopup);
 
 
 const renderInitialCards = (data, cardsContainer) => {
-  const element = new Card(data, cardTemplate)
-  const card = element.getTemplate();
+  const element = new Card(data, cardTemplate, handleImageClick)
+  const card = element.getCard();
+
+  
   cardsContainer.append(card);
   closePopup(popupAddProfile);
   formAddProfileElement.reset();
 }
 
 
-initialCards.forEach(function (data) {
+initialCards.forEach = (data) => {
   renderInitialCards(data, cardsContainer)
-})
+}
 
 export const validationConfig = {
   formSelector: '.popup__content',

@@ -2,7 +2,7 @@ export class FormValidator {
   constructor(config, form) {
     this._form = form;
     this._config = config;
-    this._buttonSubmit = this._config.submitButtonSelector;
+    this._buttonSubmit = this._form.querySelector(this._config.submitButtonSelector);
     this._inputs = Array.from(this._form.querySelectorAll(this._config.inputSelector));
     this._inactiveButtonClass = this._config.inactiveButtonClass;
   }
@@ -46,10 +46,10 @@ export class FormValidator {
   _toggleButton = () => {
     if (this._hasInvalid(this._inputs)) {
       this._buttonSubmit.classList.add(this._inactiveButtonClass);
-      this._buttonSubmit.disabled = 'disabled';
+      this._buttonSubmit.disabled = true;
     } else {
       this._buttonSubmit.classList.remove(this._inactiveButtonClass)
-      this._buttonSubmit.disabled = '';
+      this._buttonSubmit.disabled = false;
 
     }
   }
