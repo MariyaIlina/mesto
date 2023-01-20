@@ -21,6 +21,7 @@ export const popupPreview = document.querySelector('.popup_preview');
 export const popupImgPreview = popupPreview.querySelector('.popup__img');
 const popupCloseImgPreview = popupPreview.querySelector('.popup__close-preview');
 export const popupImgCaptionPreview = popupPreview.querySelector('.popup__caption');
+const imgTemplateElement = cardTemplate.querySelector('.element__mask-group');
 
 export const openPopup = (element) => {
   element.classList.add('popup_is-opened');
@@ -58,53 +59,38 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
-
 buttonOpenEditProfileForm.addEventListener('click', () => {
   openPopup(popupEditProfile);
   fillInFormInputs();
 })
 
-export const handleImageClick = (name, link) => {
+export const handleImageClick = ({name, link}) => {
   popupImgPreview.src = link;
   popupImgPreview.alt = name;
   popupImgCaptionPreview.textContent = name;
   openPopup(popupPreview);
 }
-//  const handleCardFormSubmit = (e) => {
-//   e.preventDefault()
-//   const data = {
-//     name: nameInputFormAddProfile.value,
-//     link: linkInputFormAddProfile.value,
-//   } 
-//  }
-const imgTemplateElement = cardTemplate.querySelector('.element__mask-group');
-imgTemplateElement.addEventListener('click', handleImageClick);
-popupCloseEditElement.addEventListener('click', () => { closePopup(popupEditProfile) });
-popupCloseImgPreview.addEventListener('click', () => { closePopup(popupPreview) });
-buttonOpenAddCardForm.addEventListener('click', () => { openPopup(popupAddProfile) });
-popupCloseAddElement.addEventListener('click', () => { closePopup(popupAddProfile) });
-// formAddProfileElement.addEventListener('submit', handleCardFormSubmit);
-formEditProfileElement.addEventListener('submit', handleProfileFormSubmit);
-popupEditProfile.addEventListener('click', closeOverlayPopup);
-popupAddProfile.addEventListener('click', closeOverlayPopup);
-popupPreview.addEventListener('click', closeOverlayPopup);
 
+ const handleCardFormSubmit = (e) => {
+  e.preventDefault()
+  const data = {
+    name: nameInputFormAddProfile.value,
+    link: linkInputFormAddProfile.value,
+  } 
+  renderInitialCards(data, cardsContainer);
+}
 
 const renderInitialCards = (data, cardsContainer) => {
-  const element = new Card(data, cardTemplate, handleImageClick)
-  const card = element.getCard();
-
-  
-  cardsContainer.append(card);
+  const element = new Card(data, cardTemplate); 
+  const card = element.getCard();console.log('card =>', card)
+  cardsContainer.prepend(card);
   closePopup(popupAddProfile);
   formAddProfileElement.reset();
 }
 
-
-initialCards.forEach = (data) => {
+initialCards.forEach((data) => {
   renderInitialCards(data, cardsContainer)
-}
-
+});
 export const validationConfig = {
   formSelector: '.popup__content',
   inputSelector: '.popup__text',
@@ -113,8 +99,22 @@ export const validationConfig = {
   inputErrorClass: 'popup__text_error',
   errorClass: 'popup__error'
 };
+
 const cardFormValidator = new FormValidator(validationConfig, formAddProfileElement)
 cardFormValidator.enableValidation()
 
 const profileFormValidator = new FormValidator(validationConfig, formEditProfileElement)
 profileFormValidator.enableValidation()
+
+imgTemplateElement.addEventListener('click', handleImageClick);
+popupCloseEditElement.addEventListener('click', () => { closePopup(popupEditProfile) });
+popupCloseImgPreview.addEventListener('click', () => { closePopup(popupPreview) });
+buttonOpenAddCardForm.addEventListener('click', () => { openPopup(popupAddProfile) });
+popupCloseAddElement.addEventListener('click', () => { closePopup(popupAddProfile) });
+formAddProfileElement.addEventListener('submit', handleCardFormSubmit);
+formEditProfileElement.addEventListener('submit', handleProfileFormSubmit);
+popupEditProfile.addEventListener('click', closeOverlayPopup);
+popupAddProfile.addEventListener('click', closeOverlayPopup);
+popupPreview.addEventListener('click', closeOverlayPopup);
+
+      
