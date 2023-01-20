@@ -1,12 +1,10 @@
-import { nameInputFormAddProfile, linkInputFormAddProfile, handleImageClick, openPopup, popupPreview, popupImgPreview, popupImgCaptionPreview } from "./index.js";
+import { handleImageClick } from "./index.js";
 export class Card {
   constructor(data, templateElement) {
     this._templateElement = templateElement;
     this._data = data;
     this._handleImageClick = handleImageClick;
   }
-
-  
   getCard() {
     this._cardElement = this._templateElement.cloneNode(true);
     this._titleTemplateElement = this._cardElement.querySelector('.element__text');
@@ -22,17 +20,16 @@ export class Card {
     e.target.classList.toggle('element__like_active')
   }
 
-  _handleDeleteClick = (e) => {
-    this._templateElement = null;
-    e.target.closest('.element').remove()
+  _handleDeleteClick = () => {
+    this._cardElement.remove()
   }
-  
-_addEventListeners() {
+
+  _addEventListeners() {
     const likeButtonElement = this._cardElement.querySelector('.element__like');
     const deleteButtonElement = this._cardElement.querySelector('.element__delete');
     likeButtonElement.addEventListener('click', this._handleLikeClick);
     deleteButtonElement.addEventListener('click', this._handleDeleteClick);
-    this._imgTemplateElement.addEventListener('click', this._handleImageClick);
+    this._imgTemplateElement.addEventListener('click', () => this._handleImageClick(this._data.name, this._data.link));
 
   }
 
