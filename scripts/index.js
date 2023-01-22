@@ -88,22 +88,18 @@ const handleCardFormSubmit = (e) => {
     name: nameInputFormAddProfile.value,
     link: linkInputFormAddProfile.value,
   }
-  renderInitialCards(data, cardsContainer);
-
-}
-
-const renderInitialCards = (data, cardsContainer) => {
-  const element = new Card(data, cardTemplate);
-  const card = element.getCard();
-  addCard(card, cardsContainer)
-}
-const addCard = (card, cardsContainer) => {
-  cardsContainer.prepend(card);
+  cardsContainer.prepend(createCard(data));
   closePopup(popupAddProfile);
 }
 
+function createCard(data) {
+  const element = new Card(data, cardTemplate);
+  const card = element.getCard();
+  return card;
+}
+
 initialCards.forEach((data) => {
-  renderInitialCards(data, cardsContainer)
+  cardsContainer.prepend(createCard(data));
 });
 
 buttonOpenEditProfileForm.addEventListener('click', () => {
