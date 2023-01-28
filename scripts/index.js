@@ -11,7 +11,8 @@ const buttonOpenAddCardForm = document.querySelector('.profile__add');
 const formAddProfileElement = document.querySelector('.popup__content_add');
 const cardTemplate = document.querySelector('#template').content.querySelector('.element');
 const imgTemplateElement = cardTemplate.querySelector('.element__mask-group');
-
+const inputPopupProfileName = formEditProfileElement.querySelector('.popup__text_profile_name');
+const inputPopupProfileJob = formEditProfileElement.querySelector('.popup__text_profile_job')
 export const validationConfig = {
   formSelector: '.popup__content',
   inputSelector: '.popup__text',
@@ -41,11 +42,7 @@ const handleCardFormSubmit = (e, values) => {
   addCardPopup.close();
 }
 
-function handleProfileFormSubmit(evt, values) {
-  evt.preventDefault();
-  userInfo.setUserInfo(values.name, values.job)
-  editProfilePopup.close();
-}
+
 
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
 editProfilePopup.setEventListeners()
@@ -68,11 +65,18 @@ buttonOpenAddCardForm.addEventListener('click', () => {
   cardFormValidator.resetValidation()
   addCardPopup.open();
 });
+
+function handleProfileFormSubmit(evt, values) {
+  evt.preventDefault();
+  userInfo.setUserInfo(values.name, values.job)
+  editProfilePopup.close();
+}
+
 buttonOpenEditProfileForm.addEventListener('click', () => {
   profileFormValidator.resetValidation()
   editProfilePopup.open();
-
   const { name, job } = userInfo.getUserInfo();
-  editProfilePopup.setUserInfo;
-  editProfilePopup.setFormData({ name, job })
+  inputPopupProfileName.value = name
+  inputPopupProfileJob.value = job
+ 
 })
