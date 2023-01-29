@@ -1,4 +1,4 @@
-import { handleImageClick } from "./index.js";
+import { handleImageClick } from "../pages/index";
 export class Card {
   constructor(data, templateElement) {
     this._templateElement = templateElement;
