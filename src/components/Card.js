@@ -1,12 +1,17 @@
 import { handleImageClick } from "../pages/index";
 export class Card {
   constructor(data, templateElement) {
-    this._templateElement = templateElement;
+    this._templateElement = document.querySelector(templateElement).content.querySelector('.element');
     this._data = data;
     this._handleImageClick = handleImageClick;
   }
-  getCard() {
+
+  _generateCard(){
     this._cardElement = this._templateElement.cloneNode(true);
+  }
+  
+  getCard() {
+    this._generateCard();
     this._titleTemplateElement = this._cardElement.querySelector('.element__text');
     this._imgTemplateElement = this._cardElement.querySelector('.element__mask-group');
     this._titleTemplateElement.textContent = this._data.name;
