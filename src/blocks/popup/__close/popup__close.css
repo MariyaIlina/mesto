@@ -10,6 +10,7 @@
   background-repeat: no-repeat;
   object-fit: cover;
   cursor: pointer;
+ 
 }
 
 .popup__close:hover {

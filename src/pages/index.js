@@ -14,11 +14,6 @@ const createCard = (data) => {
   cards.addItem(card)
 
 }
-
-export const handleImageClick = (name, link) => {
-  popupWithImage.open(name, link)
-}
-
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
 editProfilePopup.setEventListeners()
 const addCardPopup = new PopupWithForm('.popup_add', handleCardFormSubmit)
@@ -33,8 +28,6 @@ const userInfo = new UserInfo({ name: '.profile__name', job: '.profile__text' })
 const cards = new Section({ items: initialCards, renderer: createCard }, '.elements')
 cards.renderCard();
 
-
-
 const handleCardFormSubmit = (e, values) => {
   e.preventDefault();
   const data = {
@@ -44,11 +37,14 @@ const handleCardFormSubmit = (e, values) => {
   createCard(data)
   addCardPopup.close();
 }
-
 function handleProfileFormSubmit(evt, values) {
   evt.preventDefault();
   userInfo.setUserInfo(values.name, values.job)
   editProfilePopup.close();
+}
+
+export const handleImageClick = (name, link) => {
+  popupWithImage.open(name, link)
 }
 
 imgTemplateElement.addEventListener('click', handleImageClick);
