@@ -7,6 +7,7 @@ import { PopupWithForm } from '../components/PopupWithForm';
 import { UserInfo } from '../components/UserInfo';
 import { Section } from '../components/Section';
 import { buttonOpenEditProfileForm, formEditProfileElement, buttonOpenAddCardForm, formAddProfileElement, imgTemplateElement, inputPopupProfileName, inputPopupProfileJob, validationConfig } from '../utils/constants'
+import '../components/Api';
 
 const createCard = (data) => {
   const element = new Card(data, '#template');
