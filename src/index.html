@@ -6,7 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  </head>
+  <base href="/">
+</head>
 
 <body class="root">
   <header class="header root__header">
@@ -14,11 +15,12 @@
   </header>
   <main class="content">
     <section class="profile root__profile">
-      <img src="<%=require('./images/image.jpg')%>" class="profile__avatar" alt="аватар">
+      <img src="#" class="profile__avatar" name = "avatar" alt="аватар">
+      <button class="profile__avatar-edit"></button>
       <div class="profile__info">
         <div>
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__text">Исследователь океана</p>
+          <h1 class="profile__name"></h1>
+          <p class="profile__text"></p>
         </div>
         <button class="profile__edit" type="button" aria-label="edit"></button>
       </div>
@@ -38,14 +40,14 @@
         <input class="popup__text popup__text_profile_name" name="name" required placeholder="Введите имя" type="text"
           minlength="2" maxlength="40" id="popup-profile-name">
         <p class="popup__error"><span id="popup-profile-name-error"></span></p>
-        <input class="popup__text popup__text_profile_job" name="job" required placeholder="Введите профессию"
+        <input class="popup__text popup__text_profile_job" name="about" required placeholder="Введите профессию"
           type="text" minlength="2" maxlength="200" id="popup-profile-job">
         <p class="popup__error"><span id="popup-profile-job-error"></span></p>
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
-  <div class="popup popup_add">
+  <div class="popup  popup_add">
     <div class="popup__container popup__container_add">
       <button class="popup__close popup__close_add" type="button" aria-label="close"></button>
       <form class="popup__content popup__content_add" name="form">
@@ -69,13 +71,38 @@
       </div>
     </div>
   </div>
+
+  <div class="popup popup_delete-image">
+    <div class="popup__container popup__container_delete-image">
+      <form class="popup__content popup__content_delete-image" name="delete-image">
+        <button class="popup__close popup__close_delete-image" aria-label="Закрыть" type="button"></button>
+        <h2 class="popup__title popup__title_delete-image">Вы уверены?</h2>
+        <button class="popup__button popup__button_delete-image" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_user-avatar">
+    <div class="popup__container popup__container_user-avatar">
+      <form class="popup__content popup__content_user-avatar" name="avatar">
+        <button class="popup__close popup__close_user-avatar" aria-label="Закрыть" type="button"></button>
+        <h2 class="popup__title popup__title_user-avatar">Обновить аватар</h2>
+        <input id="user-avatar-input" class="popup__text popup__text_user-avatar" aria-label="Введите ссылку на аватар"
+          type="url" name="link" placeholder="Ссылка на картинку" required>
+        <p class="popup__error"><span id="user-avatar-input-error"></span></p>
+        <button class="popup__button popup__button_user-avatar" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <template id="template">
     <div class="element">
       <img src=" " alt=" " class="element__mask-group">
       <button class="element__delete" type="button" arial-label="delete"></button>
       <div class="element__group">
         <h2 class="element__text"></h2>
-        <button class="element__like" type="button" aria-label="like"></button>
+        <div class="element__group-like">
+          <button class="element__like" type="button" aria-label="like"></button>
+          <span class="element__like-counter"></span>
+        </div>
       </div>
     </div>
   </template>

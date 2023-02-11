@@ -42,3 +42,8 @@ export const validationConfig = {
   inputErrorClass: 'popup__text_error',
   errorClass: 'popup__error'
 };
+export const buttonDeleteCard = imgTemplateElement.querySelector('.element__delete');
+export const buttonOpenAvatarProfileForm = document.querySelector('.profile__avatar-edit');
+export const formEditProfileAvatar = document.querySelector('.popup_user-avatar')
+export const inputAvatarProfilePopup = formEditProfileAvatar.querySelector('.user-avatar-input');
+export const userAvatar = document.querySelector('.profile__avatar')

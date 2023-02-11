@@ -6,4 +6,11 @@
   justify-content: flex-start;
   align-items: center;
   border-radius: 50%;
+  position: relative;
+  object-position: center;
+  object-fit: cover;
+  display: block;
+  overflow: hidden;
+  flex-basis: 120px;
+
 }

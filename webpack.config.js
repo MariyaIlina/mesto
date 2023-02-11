@@ -42,9 +42,11 @@ module.exports = {
     },
     ]
   },
+  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      filename: 'index.html'
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
