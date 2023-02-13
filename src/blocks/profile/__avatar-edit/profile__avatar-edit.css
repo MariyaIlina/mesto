@@ -7,7 +7,6 @@
   position: absolute;
   border: none;
   background-size: 26px;
-  display: none;
   display: flex;
   z-index: 2;
   opacity: 0;
