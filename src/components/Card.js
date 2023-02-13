@@ -8,9 +8,9 @@ export class Card {
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._LikeClick = handleLikeClick;
-    this._likes = data.likes; 
+    this._likes = data.likes;
     // console.log('this._likes=>', this._likes)
-    this._ownerId = data.owner._id; 
+    this._ownerId = data.owner._id;
     // console.log('this._ownerId=>', this._ownerId)
     this._myId = userId;
 
@@ -61,15 +61,15 @@ export class Card {
     this._likeButtonElement.classList.remove('element__like_active');
     this._counterLikes.textContent = --this._likes.length;
   }
- _isLiked() {
-if (this._likes.find(this._myId)){
-this._likeButtonElement.classList.add('element__like_active');
-}
+  _isLiked() {
+    if (this._likes.find(this._myId)) {
+      this._likeButtonElement.classList.add('element__like_active');
+    }
 
-}
+  }
 
   _handleLikeClick = () => {
-     this._LikeClick(this._checkCounterLikes());
+    this._LikeClick(this._checkCounterLikes());
   }
 
   deleteCard = () => {
