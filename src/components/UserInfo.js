@@ -9,16 +9,16 @@ export class UserInfo {
     return {
       name: this._name.textContent,
       about: this._about.textContent,
-      }
+      avatar: this._avatar.src
+    }
+
   }
 
   setUserInfo(name, about) {
     this._name.textContent = name
     this._about.textContent = about
-    
   }
-setAvatarInfo(avatar){
-  this._avatar.src = avatar
-    console.log('setAvatar=>', this._avatar.src)
-}
+  setAvatarInfo(avatar) {
+    this._avatar.src = avatar
+  }
 }

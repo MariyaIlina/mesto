@@ -34,18 +34,13 @@ class Api {
   }
 
   deleteCard = (_id) => {
-    return fetch(this._baseUrl + '/cards/'+ _id, {
+    return fetch(this._baseUrl + '/cards/' +_id, {
+      headers: this._headers,
       metod: 'DELETE',
-      headers: this._headers
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch(err => console.log(err))
-  };
+    }) 
+    .then(res => res.ok ? res.json() : Promise.reject())
+    .catch(err => console.log(err))
+  }
 
   editProfile = (name, about) => {
     return fetch(this._baseUrl + '/users/me', {
@@ -82,7 +77,6 @@ class Api {
         if (res.ok) {
           return res.json();
         }
-
         return Promise.reject(`Ошибка: ${res.status}`);
       })
       .catch(err => console.log(err))
@@ -93,7 +87,7 @@ class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar
+        avatar,
       })
     }).then(res => res.ok ? res.json() : Promise.reject())
       .catch(err => console.log(err))

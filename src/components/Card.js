@@ -31,8 +31,9 @@ export class Card {
     this._imgTemplateElement.src = this._data.link;
     this._imgTemplateElement.alt = this._data.name;
     this._counterLikes.textContent = this._likes.length;
-    this._checkDeleteState()
-    this._addEventListeners()
+    this._checkDeleteState();
+    this._addEventListeners();
+    // this._isLiked();
     return this._cardElement;
   }
 
@@ -60,7 +61,12 @@ export class Card {
     this._likeButtonElement.classList.remove('element__like_active');
     this._counterLikes.textContent = --this._likes.length;
   }
+ _isLiked() {
+if (this._likes.find(this._myId)){
+this._likeButtonElement.classList.add('element__like_active');
+}
 
+}
 
   _handleLikeClick = () => {
      this._LikeClick(this._checkCounterLikes());
