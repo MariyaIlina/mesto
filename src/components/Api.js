@@ -36,7 +36,7 @@ class Api {
   deleteCard = (_id) => {
     return fetch(this._baseUrl + '/cards/' +_id, {
       headers: this._headers,
-      metod: 'DELETE',
+      method: 'DELETE',
     }) 
     .then(res => res.ok ? res.json() : Promise.reject())
     .catch(err => console.log(err))
@@ -102,25 +102,6 @@ export const api = new Api({
     'Content-Type': 'application/json'
   }
 });
-
-
-/////////////////////////////////////////////////
-//  createCards = () => {
-//   fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards', {
-//     headers: {
-//       authorization: '510ed949-2f9c-4a1e-b028-07a35bd485cd'
-//     }
-//   })
-//   .then(res => {
-//     if (res.ok) {
-//       return res.json();
-//     }
-
-//     // если ошибка, отклоняем промис
-//     return Promise.reject(`Ошибка: ${res.status}`);
-//   });
-//       console.log('getCards=>!!!',)
-//   }
 
 
 

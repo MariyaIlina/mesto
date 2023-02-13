@@ -11,6 +11,6 @@ export class Section {
   }
 
   addItem = (card) => {
-    this._container.prepend(card)
+       this._container.prepend(card)
   }
 }

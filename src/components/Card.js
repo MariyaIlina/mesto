@@ -4,14 +4,11 @@ export class Card {
     this._templateElement = document.querySelector(templateElement).content.querySelector('.element');
     this._data = data;
     this._id = data._id;
-    //  console.log('getId=>', this._id)
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._LikeClick = handleLikeClick;
     this._likes = data.likes;
-    // console.log('this._likes=>', this._likes)
     this._ownerId = data.owner._id;
-    // console.log('this._ownerId=>', this._ownerId)
     this._myId = userId;
 
   }
@@ -33,7 +30,7 @@ export class Card {
     this._counterLikes.textContent = this._likes.length;
     this._checkDeleteState();
     this._addEventListeners();
-    // this._isLiked();
+    this._isLiked();
     return this._cardElement;
   }
 
@@ -61,8 +58,8 @@ export class Card {
     this._likeButtonElement.classList.remove('element__like_active');
     this._counterLikes.textContent = --this._likes.length;
   }
-  _isLiked() {
-    if (this._likes.find(this._myId)) {
+  _isLiked () {
+    if (this._likes.find(x => x.id === this._my_Id)) {
       this._likeButtonElement.classList.add('element__like_active');
     }
 

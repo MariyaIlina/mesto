@@ -5,22 +5,37 @@ import { PopupWithImage } from '../components/PopupWithImage';
 import { PopupWithForm } from '../components/PopupWithForm';
 import { UserInfo } from '../components/UserInfo';
 import { Section } from '../components/Section';
-import { userAvatar, inputAvatarProfilePopup, formEditProfileAvatar, buttonOpenAvatarProfileForm, buttonOpenEditProfileForm, formEditProfileElement, buttonOpenAddCardForm, formAddProfileElement, imgTemplateElement, inputPopupProfileName, inputPopupProfileJob, validationConfig } from '../utils/constants'
+import { formEditProfileAvatar, buttonOpenAvatarProfileForm, buttonOpenEditProfileForm, formEditProfileElement, buttonOpenAddCardForm, formAddProfileElement, imgTemplateElement, inputPopupProfileName, inputPopupProfileJob, validationConfig } from '../utils/constants'
 import { api } from '../components/Api';
 import { PopupWithConfimation } from '../components/PopupWithConfirmation';
+let userId
+api.getUserInfo()
+  .then(res => {
+    userInfo.setUserInfo(res.name, res.about)
+    userInfo.setAvatarInfo(res.avatar)
+  })
 
-  const createCard = (data) => {
+api.getImages()
+  .then((res) => {
+    cards.renderCard(res)
+  })
+
+Promise.all([api.getUserInfo(), api.getImages()])
+  .then((res) => {
+    userId = res[0]._id
+    cards.renderCard(res)
+    userInfo.setUserInfo(res.name, res.about)
+    userInfo.setAvatarInfo(res.avatar)
+  })
+const createCard = (data) => {
   const card = new Card(data, userId, '#template',
     function handleDeleteClick() {
       popupWithDeleteImage.open();
       popupWithDeleteImage.setSubmit(() => {
-        console.log('popupWithDeleteImage.setSubmit=>', data._id)
         api.deleteCard(data._id)
           .then((res) => {
-            // card.deleteCard()
-            console.log('res=>', res)
-            popupWithDeleteImage.close()
-            console.log('handleDeleteClick()=>', handleDeleteClick())
+            card.deleteCard(),
+              popupWithDeleteImage.close()
           })
           .catch((error) => console.log(`Ошибка ${error}`));
       })
@@ -44,8 +59,8 @@ import { PopupWithConfimation } from '../components/PopupWithConfirmation';
   );
 
   cards.addItem(card.getCard())
-
 }
+
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
 editProfilePopup.setEventListeners()
 const addCardPopup = new PopupWithForm('.popup_add', handleCardFormSubmit)
@@ -64,27 +79,9 @@ const editAvatarPopup = new PopupWithForm('.popup_user-avatar', handleAvatarSubm
 editAvatarPopup.setEventListeners();
 const popupWithDeleteImage = new PopupWithConfimation('.popup_delete-image')
 popupWithDeleteImage.setEventListeners();
-let userId
-api.getUserInfo()
-  .then(res => {
-    console.log('api.getUserInfo =>', res)
-    userInfo.setUserInfo(res.name, res.about)
-    userInfo.setAvatarInfo(res.avatar)
-  })
-
-api.getImages()
-  .then((res) => {
-    cards.renderCard(res)
-    console.log('api.getImages=>', res)
-  })
-
-Promise.all([api.getImages(), api.getUserInfo()])
-  .then((res) => {
-    userId = res[1]._id
-    cards.renderCard(res)
-    userInfo.setUserInfo(res.name, res.about)
-    userInfo.setAvatarInfo(res.avatar)
-  })
+export const handleImageClick = (name, link) => {
+  popupWithImage.open(name, link)
+};
 
 function handleAvatarSubmit(e, avatar) {
   e.preventDefault();
@@ -92,7 +89,6 @@ function handleAvatarSubmit(e, avatar) {
   api.editAvatar(avatar.link)
     .then((res) => {
       userInfo.setAvatarInfo(avatar.link)
-      console.log('handleAvatarSubmit=>', handleAvatarSubmit)
     })
     .catch(error => console.log(`Ошибка при отправке аватара ${error}`))
     .finally(() => {
@@ -100,11 +96,6 @@ function handleAvatarSubmit(e, avatar) {
       editAvatarPopup.close();
     })
 }
-
-buttonOpenAvatarProfileForm.addEventListener('click', () => {
-  avatarFormValidation.resetValidation();
-  editAvatarPopup.open();
-})
 
 function handleCardFormSubmit(e, values) {
   e.preventDefault();
@@ -132,10 +123,12 @@ function handleProfileFormSubmit(e, res) {
     })
 }
 
-export const handleImageClick = (name, link) => {
-  popupWithImage.open(name, link)
-};
 imgTemplateElement.addEventListener('click', handleImageClick);
+
+buttonOpenAvatarProfileForm.addEventListener('click', () => {
+  avatarFormValidation.resetValidation();
+  editAvatarPopup.open();
+})
 
 buttonOpenAddCardForm.addEventListener('click', () => {
   cardFormValidator.resetValidation()
