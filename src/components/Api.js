@@ -34,7 +34,7 @@ class Api {
   }
 
   deleteCard = (_id) => {
-    return fetch(this._baseUrl + '/cards/' +_id, {
+    return fetch(this._baseUrl + '/cards/' + _id, {
       headers: this._headers,
       method: 'DELETE',
     }) 

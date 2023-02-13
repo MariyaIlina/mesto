@@ -5,7 +5,6 @@ export class PopupWithConfimation extends Popup {
     this._form = this._popup.querySelector('.popup__content');
   }
 
-
   setSubmit(action) {
     this._handleSubmitCallback = action;
   }

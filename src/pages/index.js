@@ -59,6 +59,7 @@ const createCard = (data) => {
   );
 
   cards.addItem(card.getCard())
+  
 }
 
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
