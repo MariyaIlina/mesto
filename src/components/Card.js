@@ -58,8 +58,8 @@ export class Card {
     this._likeButtonElement.classList.remove('element__like_active');
     this._counterLikes.textContent = --this._likes.length;
   }
-  _isLiked () {
-      if (this._likes.find(user => user._id === this._myId)) {
+  _isLiked() {
+    if (this._likes.find(user => user._id === this._myId)) {
       this._likeButtonElement.classList.add('element__like_active');
     } else {
       this._likeButtonElement.classList.remove('element__like_active')

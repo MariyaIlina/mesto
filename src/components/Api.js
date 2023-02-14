@@ -3,19 +3,28 @@ class Api {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
   }
+
+  _checkResponse(res) {
+    {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка ${res.status}`);
+    }
+
+  }
   getUserInfo = () => {
     return fetch(this._baseUrl + '/users/me', {
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject())
-      .catch(err => console.log(err))
+      .then(this._checkResponse)
   }
 
   getImages = () => {
     return fetch(this._baseUrl + '/cards', {
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(this._checkResponse)
   }
 
   addCard = (name, link) => {
@@ -29,17 +38,15 @@ class Api {
       })
     }
     )
-      .then(res => res.ok ? res.json() : Promise.reject())
-      .catch(err => console.log(err))
+      .then(this._checkResponse)
   }
 
   deleteCard = (_id) => {
     return fetch(this._baseUrl + '/cards/' + _id, {
       headers: this._headers,
       method: 'DELETE',
-    }) 
-    .then(res => res.ok ? res.json() : Promise.reject())
-    .catch(err => console.log(err))
+    })
+      .then(this._checkResponse)
   }
 
   editProfile = (name, about) => {
@@ -50,8 +57,8 @@ class Api {
         name,
         about
       })
-    }).then(res => res.ok ? res.json() : Promise.reject())
-      .catch(err => console.log(err))
+    })
+      .then(this._checkResponse)
   }
 
   putLike(_id) {
@@ -59,13 +66,7 @@ class Api {
       headers: this._headers,
       method: 'PUT',
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .catch(err => console.log(err))
+      .then(this._checkResponse)
   }
 
   deleteLike(_id) {
@@ -73,13 +74,7 @@ class Api {
       headers: this._headers,
       method: 'DELETE',
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch(err => console.log(err))
+      .then(this._checkResponse)
   }
 
   editAvatar = (avatar) => {
@@ -89,8 +84,8 @@ class Api {
       body: JSON.stringify({
         avatar,
       })
-    }).then(res => res.ok ? res.json() : Promise.reject())
-      .catch(err => console.log(err))
+    })
+      .then(this._checkResponse)
   }
 
 }

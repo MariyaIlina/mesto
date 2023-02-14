@@ -8,25 +8,19 @@ import { Section } from '../components/Section';
 import { formEditProfileAvatar, buttonOpenAvatarProfileForm, buttonOpenEditProfileForm, formEditProfileElement, buttonOpenAddCardForm, formAddProfileElement, imgTemplateElement, inputPopupProfileName, inputPopupProfileJob, validationConfig } from '../utils/constants'
 import { api } from '../components/Api';
 import { PopupWithConfimation } from '../components/PopupWithConfirmation';
-let userId
-api.getUserInfo()
-  .then(res => {
-    userInfo.setUserInfo(res.name, res.about)
-    userInfo.setAvatarInfo(res.avatar)
-  })
+import { data } from 'autoprefixer';
 
-api.getImages()
-  .then((res) => {
-    cards.renderCard(res)
-  })
+let userId
 
 Promise.all([api.getUserInfo(), api.getImages()])
   .then((res) => {
-    userId = res[0]._id
-    cards.renderCard(res)
-    userInfo.setUserInfo(res.name, res.about)
-    userInfo.setAvatarInfo(res.avatar)
+    userId = res[0]._id // `res[0]` это данные профиля
+    cards.renderCard(res[1]) //`res[1]` это карточки 
+    userInfo.setUserInfo(res[0].name, res[0].about) //`res[0]` это данные профиля
+    userInfo.setAvatarInfo(res[0].avatar) //`res[0]` это данные профиля
   })
+  .catch((error) => console.log(`Ошибка ${error}`));
+
 const createCard = (data) => {
   const card = new Card(data, userId, '#template',
     function handleDeleteClick() {
@@ -59,7 +53,7 @@ const createCard = (data) => {
   );
 
   cards.addItem(card.getCard())
-  
+
 }
 
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
@@ -90,11 +84,11 @@ function handleAvatarSubmit(e, avatar) {
   api.editAvatar(avatar.link)
     .then((res) => {
       userInfo.setAvatarInfo(avatar.link)
+      editAvatarPopup.close();
     })
     .catch(error => console.log(`Ошибка при отправке аватара ${error}`))
     .finally(() => {
       editAvatarPopup.setButtonText('Сохранить')
-      editAvatarPopup.close();
     })
 }
 
@@ -104,10 +98,10 @@ function handleCardFormSubmit(e, values) {
   api.addCard(values.name, values.link)
     .then((res) => {
       createCard(res);
+      addCardPopup.close();
     })
     .finally(() => {
       addCardPopup.setButtonText('Сохранить')
-      addCardPopup.close();
     })
 
 }
@@ -117,10 +111,11 @@ function handleProfileFormSubmit(e, res) {
   api.editProfile(res.name, res.about)
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about)
+      editProfilePopup.close();
     })
     .finally(() => {
       editProfilePopup.setButtonText('Сохранить')
-      editProfilePopup.close();
+
     })
 }
 
