@@ -5,7 +5,7 @@ export class Section {
   }
 
   renderCard = (items) => {
-    items.forEach((data) => {
+    items.reverse().forEach((data) => {
       this._renderer(data);
     })
   }
