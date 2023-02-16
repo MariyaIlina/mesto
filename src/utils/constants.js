@@ -43,7 +43,9 @@ export const validationConfig = {
   errorClass: 'popup__error'
 };
 export const buttonDeleteCard = imgTemplateElement.querySelector('.element__delete');
+export const buttonLikeCard = imgTemplateElement.querySelector('.element__like');
 export const buttonOpenAvatarProfileForm = document.querySelector('.profile__avatar-edit');
-export const formEditProfileAvatar = document.querySelector('.popup_user-avatar')
+export const formEditProfileAvatar = document.querySelector('.popup_user-avatar');
 export const inputAvatarProfilePopup = formEditProfileAvatar.querySelector('.user-avatar-input');
-export const userAvatar = document.querySelector('.profile__avatar')
+export const userAvatar = document.querySelector('.profile__avatar');
+export let likesCounter = imgTemplateElement.querySelector('.element__like-counter');

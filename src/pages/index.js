@@ -18,6 +18,7 @@ Promise.all([api.getUserInfo(), api.getImages()])
     cards.renderCard(res[1]) //`res[1]` это карточки 
     userInfo.setUserInfo(res[0].name, res[0].about) //`res[0]` это данные профиля
     userInfo.setAvatarInfo(res[0].avatar) //`res[0]` это данные профиля
+
   })
   .catch((error) => console.log(`Ошибка ${error}`));
 
@@ -36,25 +37,36 @@ const createCard = (data) => {
     },
 
     function handleLikeClick(isLike) {
+
       if (isLike) {
-        api.deleteLike(card.getId())
-          .then(card.removeLike())
+        api.deleteLike(data._id)
+          .then((res) => {
+            card.removeLike()
+            card.setLikes(res.likes)
+          })
           .catch((error) =>
             console.log(`Ошибка ${error} при удалении лайка`)
           );
       } else {
-        api.putLike(card.getId())
-          .then(card.addLike())
+        api.putLike(data._id)
+          .then((res) => {
+            card.addLike()
+            console.log('res=>', res)
+            card.setLikes(res.likes)
+
+          })
           .catch((error) =>
             console.log(`Ошибка ${error} при отправке лайка`)
           )
       }
+    },
+    function handleImageClick(name, link) {
+      popupWithImage.open(name, link)
     }
   );
-
   cards.addItem(card.getCard())
-
 }
+
 
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
 editProfilePopup.setEventListeners()
@@ -74,9 +86,7 @@ const editAvatarPopup = new PopupWithForm('.popup_user-avatar', handleAvatarSubm
 editAvatarPopup.setEventListeners();
 const popupWithDeleteImage = new PopupWithConfimation('.popup_delete-image')
 popupWithDeleteImage.setEventListeners();
-export const handleImageClick = (name, link) => {
-  popupWithImage.open(name, link)
-};
+
 
 function handleAvatarSubmit(e, avatar) {
   e.preventDefault();
@@ -115,11 +125,8 @@ function handleProfileFormSubmit(e, res) {
     })
     .finally(() => {
       editProfilePopup.setButtonText('Сохранить')
-
     })
 }
-
-imgTemplateElement.addEventListener('click', handleImageClick);
 
 buttonOpenAvatarProfileForm.addEventListener('click', () => {
   avatarFormValidation.resetValidation();

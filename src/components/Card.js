@@ -1,6 +1,5 @@
-import { handleImageClick } from "../pages/index";
 export class Card {
-  constructor(data, userId, templateElement, handleDeleteClick, handleLikeClick) {
+  constructor(data, userId, templateElement, handleDeleteClick, handleLikeClick, handleImageClick) {
     this._templateElement = document.querySelector(templateElement).content.querySelector('.element');
     this._data = data;
     this._id = data._id;
@@ -30,7 +29,7 @@ export class Card {
     this._counterLikes.textContent = this._likes.length;
     this._checkDeleteState();
     this._addEventListeners();
-    this._isLiked();
+    this.isLiked();
     return this._cardElement;
   }
 
@@ -58,7 +57,7 @@ export class Card {
     this._likeButtonElement.classList.remove('element__like_active');
     this._counterLikes.textContent = --this._likes.length;
   }
-  _isLiked() {
+  isLiked() {
     if (this._likes.find(user => user._id === this._myId)) {
       this._likeButtonElement.classList.add('element__like_active');
     } else {
@@ -66,7 +65,10 @@ export class Card {
     }
 
   }
-
+  setLikes(newLikesArray) {
+    this._likes = newLikesArray
+    this._counterLikes.textContent = newLikesArray.length;
+  }
   _handleLikeClick = () => {
     this._LikeClick(this._checkCounterLikes());
   }
