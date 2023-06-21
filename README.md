@@ -12,5 +12,5 @@
 
 Ссылка на  проект в Github:  https://github.com/MariyaIlina/mesto.git
 
-Ссылка на сайт: https://mariyailina.github.io/mesto/src/index.html
+Ссылка на сайт: https://mariyailina.github.io/mesto/index.html
 `

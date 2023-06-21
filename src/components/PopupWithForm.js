@@ -33,10 +33,4 @@ export class PopupWithForm extends Popup {
   setButtonText = (text) => {
     this._button.textContent = text
   }
-
-  // setInputValues(data) {
-  //   this._inputs.forEach((input) => {
-  //     input.value = data[input.name];
-  //   });
-  // }
 }
