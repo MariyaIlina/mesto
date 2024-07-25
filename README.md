@@ -10,7 +10,5 @@
 + в проекте используется : позиционирование, flex;
 + проект адаптирован для просмотра на мобильных устройствах.
 
-Ссылка на  проект в Github:  https://github.com/MariyaIlina/mesto.git
-
 Ссылка на сайт: https://mariyailina.github.io/mesto/index.html
 `
